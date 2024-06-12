@@ -1,5 +1,5 @@
 {
-  "name": "expo-plist-reader",
+  "name": "expo-plist-file-reader",
   "version": "0.1.0",
   "description": "module to read plist (or bplist) in react-native",
   "main": "build/index.js",
@@ -12,8 +12,7 @@
     "prepare": "expo-module prepare",
     "prepublishOnly": "expo-module prepublishOnly",
     "expo-module": "expo-module",
-    "open:ios": "xed example/ios",
-    "open:android": "open -a \"Android Studio\" example/android"
+    "open:ios": "xed example/ios"
   },
   "keywords": [
     "react-native",
@@ -21,13 +20,13 @@
     "expo-plist-reader",
     "ExpoPlistReader"
   ],
-  "repository": "https://github.com/idrakimuhamad/expo-plist-reader",
+  "repository": "https://github.com/idrakimuhamad/expo-plist-file-reader",
   "bugs": {
-    "url": "https://github.com/idrakimuhamad/expo-plist-reader/issues"
+    "url": "https://github.com/idrakimuhamad/expo-plist-file-reader/issues"
   },
   "author": "idraki muhamad <idrakimuhamad@gmail.com> (https://github.com/idrakimuhamad)",
   "license": "MIT",
-  "homepage": "https://github.com/idrakimuhamad/expo-plist-reader#readme",
+  "homepage": "https://github.com/idrakimuhamad/expo-plist-file-reader#readme",
   "dependencies": {},
   "devDependencies": {
     "@types/react": "^18.0.25",

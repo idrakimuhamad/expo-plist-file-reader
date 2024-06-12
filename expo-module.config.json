@@ -1,9 +1,6 @@
 {
-  "platforms": ["ios", "tvos", "android", "web"],
+  "platforms": ["ios", "tvos", "web"],
   "ios": {
     "modules": ["ExpoPlistReaderModule"]
-  },
-  "android": {
-    "modules": ["expo.modules.plistreader.ExpoPlistReaderModule"]
   }
 }

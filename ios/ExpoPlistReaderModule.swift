@@ -10,35 +10,29 @@ public class ExpoPlistReaderModule: Module {
     // The module will be accessible from `requireNativeModule('ExpoPlistReader')` in JavaScript.
     Name("ExpoPlistReader")
 
-    // Sets constant properties on the module. Can take a dictionary or a closure that returns a dictionary.
-    Constants([
-      "PI": Double.pi
-    ])
-
-    // Defines event names that the module can send to JavaScript.
-    Events("onChange")
-
-    // Defines a JavaScript synchronous function that runs the native code on the JavaScript thread.
-    Function("hello") {
-      return "Hello world! 👋"
-    }
-
-    // Defines a JavaScript function that always returns a Promise and whose native code
-    // is by default dispatched on the different thread than the JavaScript runtime runs on.
-    AsyncFunction("setValueAsync") { (value: String) in
-      // Send an event to JavaScript.
-      self.sendEvent("onChange", [
-        "value": value
-      ])
-    }
-
-    // Enables the module to be used as a native view. Definition components that are accepted as part of the
-    // view definition: Prop, Events.
-    View(ExpoPlistReaderView.self) {
-      // Defines a setter for the `name` prop.
-      Prop("name") { (view: ExpoPlistReaderView, prop: String) in
-        print(prop)
-      }
+    AsyncFunction("readFile") { (filePath: String, promise: Promise) in
+        // Read the file from the path and return its content.
+        let fileManager = FileManager.default
+        
+        guard let documentsPath = fileManager.urls(for: .libraryDirectory, in: .userDomainMask).first else {
+            let error = NSError(domain: "", code: 200, userInfo: [NSLocalizedDescriptionKey: "Path not found"])
+            promise.reject(error)
+            return
+        }
+        
+        let fullPath = documentsPath.appendingPathComponent(filePath)
+        
+        do {
+            let data = try Data(contentsOf: fullPath)
+            
+            if let plist = try PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? [String: Any] {
+                promise.resolve(plist)
+            } else {
+                promise.reject("read_error", "Failed to parse plist")
+            }
+        } catch {
+            promise.reject("read_error", "Failed to read file: \(error.localizedDescription)")
+        }
     }
   }
 }

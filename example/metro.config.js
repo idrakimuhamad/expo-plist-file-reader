@@ -19,8 +19,10 @@ config.resolver.nodeModulesPaths = [
 ];
 
 config.resolver.extraNodeModules = {
-  'expo-plist-reader': '..',
+  'expo-plist-file-reader': '..',
 };
+
+config.resolver.assetExts = [...config.resolver.assetExts, 'plist'],
 
 config.watchFolders = [path.resolve(__dirname, '..')];
 
