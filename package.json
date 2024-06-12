@@ -1,6 +1,6 @@
 {
   "name": "expo-plist-file-reader",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "module to read plist (or bplist) in react-native",
   "main": "build/index.js",
   "types": "build/index.d.ts",
