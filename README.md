@@ -1,12 +1,11 @@
 # expo-plist-file-reader
-
 Module to read plist (or bplist) in react-native.
 
-This is iOS only module, so always check if you are running on iOS before using it.
+This is an iOS-only module, so always check if you are running on iOS before using it.
 
-This is useful if you need to read NSUserDefaults or any other plist file in your iOS app, that may be created but other library or native code, that you may want to read in your react-native app, and make use of it.
+This module is useful if you need to read `NSUserDefaults` or any other plist file in your iOS app. These files may be created by other libraries or native code, and you may want to read them in your react-native app and make use of the data.
 
-Currently, it only supports reading the file, and not writing to it, and the path must be relative to the application library directory, without the URI scheme, as it always assume the root would be from the Library directory.
+Currently, this module only supports reading the file and does not support writing to it. The path must be relative to the application library directory, without the URI scheme, as it always assumes the root would be from the Library directory.
 
 ### Add the package to your npm dependencies
 
